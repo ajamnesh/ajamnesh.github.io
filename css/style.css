@@ -1,0 +1,26 @@
+
+body {
+    font-family: serif;
+    max-width: 800px;
+    margin: auto;
+    padding: 2rem;
+    background-color: #f9f9f9;
+    color: #222;
+}
+header, footer {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+nav a {
+    margin: 0 0.5rem;
+    text-decoration: none;
+    color: #0066cc;
+}
+main {
+    line-height: 1.6;
+}
+
+header {
+    flex-wrap: nowrap;
+    gap: 1.5rem;
+}
