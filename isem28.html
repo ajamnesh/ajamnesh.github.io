@@ -2,58 +2,194 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-    <meta name="author" content="Asgar Jamneshan">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Asgar Jamneshan">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ISem28 – Asgar Jamneshan</title>
   <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    /* Gallery (thumbnails visible on page) */
+    .image-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    .image-gallery img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+      cursor: pointer;
+      transition: transform 0.2s ease;
+      display: block;
+    }
+    .image-gallery img:hover { transform: scale(1.03); }
+
+    /* JS lightbox overlay */
+    .js-lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 99999;
+      padding: 2rem;
+      opacity: 0;
+      transition: opacity 150ms ease-in-out;
+    }
+    .js-lightbox.open {
+      display: flex;
+      opacity: 1;
+    }
+    .js-lightbox__img {
+      max-width: 90vw;
+      max-height: 80vh;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      display: block;
+      filter: none !important;
+      mix-blend-mode: normal !important;
+    }
+    .js-lightbox__close,
+    .js-lightbox__nav {
+      position: absolute;
+      color: #fff;
+      text-decoration: none;
+      user-select: none;
+      line-height: 1;
+    }
+    .js-lightbox__close {
+      top: 16px; right: 24px;
+      font-size: 2rem;
+      cursor: pointer;
+    }
+    .js-lightbox__nav {
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 3rem;
+      padding: 0 .5rem;
+      cursor: pointer;
+    }
+    .js-lightbox__nav--prev { left: 12px; }
+    .js-lightbox__nav--next { right: 12px; }
+    .js-lightbox__close:hover,
+    .js-lightbox__nav:hover { color: #ddd; }
+
+    body.lb-no-scroll { overflow: hidden; }
+  </style>
 </head>
 <body>
 
 <header>
   <h1>ISem28</h1>
   <nav>
-     <a href="index.html">Home</a> |
-     <!-- <a href="cv.html">CV</a> |-->
-    <a href="publications.html">Publications and Preprints</a> |
-    <a href="teaching.html">Teaching</a> |
-    <a href="supervision.html">Supervision</a> |
-    <a href="isem28.html">ISem28</a> |
+    <a href="index.html">Home</a>
+    <!-- <a href="cv.html">CV</a> -->
+    <a href="publications.html">Publications and Preprints</a>
+    <a href="teaching.html">Teaching</a>
+    <a href="supervision.html">Supervision</a>
+    <a href="isem28.html">ISem28</a>
     <a href="contact.html">Contact</a>
   </nav>
 </header>
 
 <main>
   <p>
-    Together with <a href="https://www.fan.uni-wuppertal.de/de/mitarbeiter/dr-henrik-kreidler/">Henrik Kreidler</a>, I am organizing the 28th Edition of the Internet Seminar (ISem). The topic of ISem28 is "Ergodic Structure Theory and Applications".
+    Together with <a href="https://www.fan.uni-wuppertal.de/de/mitarbeiter/dr-henrik-kreidler/">Henrik Kreidler</a>, I organized the 28th Edition of the Internet Seminar (ISem) in the academic year 2024/25. The topic of ISem28 was "Ergodic Structure Theory and Applications".
   </p>
 
   <p>
-    The Internet Seminar is an annual, year-long international mathematical program aimed at Master’s and PhD students. Each year, it explores advanced topics in analysis and related areas. For an overview of previous editions, see 
+    The Internet Seminar is an annual, year-long international mathematical program aimed at Master’s and PhD students, consisting of three stages: a lecture phase, a project phase, and a final workshop. Each year, it explores advanced topics in analysis and related areas. For an overview of previous editions, see
     <a href="https://www.math.kit.edu/iana3/seite/isem/en/">this page</a>.
   </p>
 
   <p>
-    ISem consists of three stages: a lecture phase, a project phase, and a final workshop. In February 2025, we successfully concluded the virtual lecture phase of ISem28 with over 400 participants organized into international local groups.
+    In February 2025, we successfully concluded the virtual lecture phase of ISem28 with over 400 participants organized into international local groups. The lecture phase culminated in a set of self-contained lecture notes (250 pages), which you can download here:
+    <a href="pdf/ISem28_notes.pdf" target="_blank">ISem28 Lecture Notes</a>.
   </p>
 
   <p>
-    The lecture phase culminated in a set of self-contained lecture notes (250 pages), which you can download here:
-    <a href="pdf/ISem28_notes.pdf" target="_blank">ISem28 Lecture Notes</a>. 
-
+    The project phase comprised 11 international project groups coordinated by independent project leaders. These groups presented their results at the final workshop, which took place July 14–18, 2025, in Wuppertal. Below you can find some impressions from the final workshop.
   </p>
 
   <p>
-    We are currently in the project phase, comprising 11 project groups coordinated by independent project leaders. These groups will present their results at the final workshop, taking place July 14–18, 2025, in Wuppertal.
+    For more details, visit the official <a href="https://sites.google.com/view/isem28/isem-format">ISem28 website</a>.
   </p>
 
-  <p>
-    For more details, visit the official <a href="https://sites.google.com/view/isem28/isem-format">ISem28 website</a>. 
-  </p>
+  <!-- Visible thumbnails (3 only) -->
+  <div class="image-gallery" id="isem-gallery" aria-label="ISem28 gallery">
+    <img src="img/isem1.jpg" data-full="img/isem1.jpg" alt="ISem image 1" loading="lazy" decoding="async">
+    <img src="img/isem2.jpg" data-full="img/isem2.jpg" alt="ISem image 2" loading="lazy" decoding="async">
+    <img src="img/isem3.jpg" data-full="img/isem3.jpg" alt="ISem image 3" loading="lazy" decoding="async">
+  </div>
 </main>
+
+<!-- JS Lightbox (one overlay for all images) -->
+<div class="js-lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="image viewer">
+  <span class="js-lightbox__close" id="lbClose" aria-label="Close">&times;</span>
+  <span class="js-lightbox__nav js-lightbox__nav--prev" id="lbPrev" aria-label="Previous">&#10094;</span>
+  <img class="js-lightbox__img" id="lbImg" alt="">
+  <span class="js-lightbox__nav js-lightbox__nav--next" id="lbNext" aria-label="Next">&#10095;</span>
+</div>
 
 <footer>
   <p>&copy; 2025 Asgar Jamneshan</p>
 </footer>
+
+<script>
+  (function () {
+    const gallery = document.getElementById('isem-gallery');
+    const items = Array.from(gallery.querySelectorAll('img'));
+    const overlay = document.getElementById('lightbox');
+    const imgEl = document.getElementById('lbImg');
+    const btnClose = document.getElementById('lbClose');
+    const btnPrev = document.getElementById('lbPrev');
+    const btnNext = document.getElementById('lbNext');
+
+    let index = 0;
+
+    function openAt(i) {
+      index = (i + items.length) % items.length;
+      const thumb = items[index];
+      const src = thumb.getAttribute('data-full') || thumb.getAttribute('src');
+      const alt = thumb.getAttribute('alt') || '';
+      imgEl.src = src;
+      imgEl.alt = alt;
+      overlay.classList.add('open');
+      document.body.classList.add('lb-no-scroll');
+    }
+
+    function close() {
+      overlay.classList.remove('open');
+      document.body.classList.remove('lb-no-scroll');
+      imgEl.src = '';
+    }
+
+    function next() { openAt(index + 1); }
+    function prev() { openAt(index - 1); }
+
+    items.forEach((img, i) => {
+      img.addEventListener('click', () => openAt(i));
+    });
+
+    btnClose.addEventListener('click', close);
+    btnNext.addEventListener('click', next);
+    btnPrev.addEventListener('click', prev);
+
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) close();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (!overlay.classList.contains('open')) return;
+      if (e.key === 'Escape') close();
+      else if (e.key === 'ArrowRight') next();
+      else if (e.key === 'ArrowLeft') prev();
+    });
+  })();
+</script>
 
 </body>
 </html>
