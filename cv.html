@@ -2,12 +2,153 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Cv – Asgar Jamneshan</title>
+    <meta name="author" content="Asgar Jamneshan">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV – Asgar Jamneshan</title>
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        .cv section + section {
+            margin-top: 2rem;
+        }
+
+        .cv-list {
+            display: grid;
+            grid-template-columns: 7rem minmax(0, 1fr);
+            gap: 1rem 1.5rem;
+        }
+
+        .cv-list dt {
+            font-weight: bold;
+        }
+
+        .cv-list dd {
+            margin: 0;
+        }
+
+        .cv-details {
+            margin: 0.5rem 0 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        @media (max-width: 600px) {
+            .cv-list {
+                grid-template-columns: minmax(0, 1fr);
+                row-gap: 0.25rem;
+            }
+
+            .cv-list dd {
+                margin-bottom: 1rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <header><h1>Cv</h1><a href="index.html">Back to Home</a></header>
-    <main><p>[Placeholder for cv content]</p></main>
-    <footer><p>&copy; 2025 Asgar Jamneshan</p></footer>
+<header>
+    <h1>Curriculum Vitae</h1>
+    <nav aria-label="Main navigation">
+        <a href="index.html">Home</a> |
+        <a href="cv.html" aria-current="page">CV</a> |
+        <a href="publications.html">Publications and Preprints</a> |
+        <a href="teaching.html">Teaching</a> |
+        <a href="supervision.html">Supervision</a> |
+        <a href="isem28.html">ISem28</a> |
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
+
+<main class="cv">
+    <section aria-labelledby="academic-positions">
+        <h2 id="academic-positions">Academic Positions</h2>
+        <dl class="cv-list">
+            <dt>2025–present</dt>
+            <dd>
+                Heisenberg Position, <em>TUD Dresden University of Technology</em>
+                (previously hosted at the <em>University of Bonn</em>)
+            </dd>
+
+            <dt>2025–present</dt>
+            <dd>
+                MPI-CBG Fellow, <em>Max Planck Institute of Molecular Cell Biology and Genetics</em>, Dresden
+            </dd>
+
+            <dt>2024–2025</dt>
+            <dd>Senior Researcher, <em>TUD Dresden University of Technology</em></dd>
+
+            <dt>2021–2024</dt>
+            <dd>Tenure-Track Assistant Professor, <em>Koç University</em>, Istanbul</dd>
+
+            <dt>2018–2021</dt>
+            <dd>Visiting Assistant Professor, <em>University of California, Los Angeles</em></dd>
+
+            <dt>2018</dt>
+            <dd>Postdoctoral Fellow, <em>Eidgenössische Technische Hochschule Zürich</em></dd>
+
+            <dt>2014–2018</dt>
+            <dd>Postdoctoral Researcher, <em>University of Konstanz</em></dd>
+
+            <dt>2013–2014</dt>
+            <dd>Postdoctoral Researcher, <em>Humboldt-Universität zu Berlin</em></dd>
+        </dl>
+    </section>
+
+    <section aria-labelledby="education">
+        <h2 id="education">Education</h2>
+        <dl class="cv-list">
+            <dt>2014</dt>
+            <dd>
+                Doctorate in Mathematics, Dr. rer. nat., <em>Humboldt-Universität zu Berlin</em>
+                <ul class="cv-details">
+                    <li>Dissertation title: <em>A Theory of Conditional Sets</em></li>
+                    <li>Advisor: Prof. Dr. Michael Kupper</li>
+                    <li>Further committee members: Prof. Dr. Patrick Cheridito, Prof. Dr. Peter Imkeller</li>
+                </ul>
+            </dd>
+
+            <dt>2010</dt>
+            <dd>
+                Diplom in Mathematics with a minor in General and Comparative Literature,
+                <em>Humboldt-Universität zu Berlin, Freie Universität Berlin, Universitat de Barcelona</em>
+                <ul class="cv-details">
+                    <li>Diplom thesis: <em>Enlargement of filtrations for discrete time martingales on countable probability spaces</em></li>
+                    <li>Advisor: Prof. Dr. Peter Imkeller</li>
+                </ul>
+            </dd>
+        </dl>
+    </section>
+
+    <section aria-labelledby="awards-funding">
+        <h2 id="awards-funding">Awards, Fellowships, and Third-Party Funding</h2>
+        <dl class="cv-list">
+            <dt>2025</dt>
+            <dd>MPI-CBG Fellow</dd>
+
+            <dt>2025</dt>
+            <dd>Junior Research Retreats Program, HCM (€22,500)</dd>
+
+            <dt>2025</dt>
+            <dd>DFG Heisenberg Programme (€697,000)</dd>
+
+            <dt>2023</dt>
+            <dd>TÜBİTAK 1001 Grant (approx. €60,000)</dd>
+
+            <dt>2022</dt>
+            <dd>Masatoshi Gündüz İkeda Research Award</dd>
+
+            <dt>2018</dt>
+            <dd>DFG Research Fellowship (€96,000)</dd>
+
+            <dt>2015</dt>
+            <dd>DFG Research Grant (€205,000)</dd>
+
+            <dt>2010</dt>
+            <dd>Doctoral Fellowship, IRTG “Stochastic Models of Complex Processes”</dd>
+        </dl>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2025 Asgar Jamneshan</p>
+</footer>
 </body>
 </html>
